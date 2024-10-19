@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import discord from 'discord.js';
 import { GatewayIntentBits } from 'discord.js';
+import downTimeTracker from './src/downTimeTimer.js';
 
 dotenv.config();
 
@@ -10,6 +11,7 @@ const client = new discord.Client({
 
 client.on('ready', () => {
   console.log(`서버 온라인 ${client.user.tag}!`);
+  downTimeTracker();
 });
 
 client.on('messageCreate', async msg => {
