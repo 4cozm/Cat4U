@@ -17,7 +17,7 @@ const downTimeTracker = () => {
         const response = await fetch('https://esi.evetech.net/latest/status/?datasource=tranquility');
 
         if (!response.ok) {
-          throw new Error('ESI가 응답하지 않습니다', response.status);
+          console.log('ESI가 응답하지 않습니다', response.status);
         }
         const serverStatus = await response.json();
 
