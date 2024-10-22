@@ -3,6 +3,19 @@ import discord from 'discord.js';
 import { GatewayIntentBits } from 'discord.js';
 import downTimeTracker from './src/downTimeTimer.js';
 
+import express from 'express';
+import path from 'path';
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.listen(process.env.WEB_PORT, () => {
+  console.log('웹 서버 구동 중');
+});
+
 dotenv.config();
 
 const client = new discord.Client({
